@@ -4,6 +4,7 @@ import { authenticate } from '../middleware/auth.js'
 import { authorize } from '../middleware/auth.js'
 import { validate, createRoomSchema } from '../middleware/validation.js'
 import { rebuildSnapshot } from '../services/resultsSnapshot.js'
+import { clearRoomStreaks } from '../services/penaltyService.js'
 
 const router = express.Router()
 
@@ -153,6 +154,8 @@ router.put('/:id', authenticate, authorize('teacher'), async (req, res) => {
       // shared cache instead of each triggering full-room aggregations (the end-session stampede).
       // Fire-and-forget + no-op when Redis is off; never blocks or fails the room-end response.
       rebuildSnapshot(room._id).catch((e) => console.error('[rooms] snapshot pre-warm failed:', e.message))
+      // Clean up transient in-memory streak state for this room.
+      clearRoomStreaks(String(room._id))
     }
     
     res.json({ message: 'Room updated successfully', room: updatedRoom })

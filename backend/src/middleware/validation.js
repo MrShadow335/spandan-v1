@@ -37,7 +37,8 @@ export const createRoomSchema = z.object({
   settings: z.object({
     allowLateJoin: z.boolean().optional(),
     showResultsImmediately: z.boolean().optional(),
-    requireCorrectAnswer: z.boolean().optional()
+    requireCorrectAnswer: z.boolean().optional(),
+    strictMode: z.boolean().optional()
   }).optional()
 })
 
@@ -46,6 +47,7 @@ export const roomSettingsSchema = z.object({
   allowLateJoin: z.boolean().optional(),
   showResultsImmediately: z.boolean().optional(),
   requireCorrectAnswer: z.boolean().optional(),
+  strictMode: z.boolean().optional(),
   timeToAnswer: z.number().min(5).max(300).optional(),
   points: z.number().min(10).max(1000).optional(),
   segmentTime: z.number().min(1).max(60).optional(),

@@ -2,7 +2,7 @@ import express from 'express'
 import { createRoom, getRoomById, getRoomByCode, getRoomsByTeacher, getRoomsByStudent, getActiveRoomsByStudent, updateRoom, deleteRoom } from '../services/roomService.js'
 import { authenticate } from '../middleware/auth.js'
 import { authorize } from '../middleware/auth.js'
-import { validate, createRoomSchema } from '../middleware/validation.js'
+import { validate, createRoomSchema, roomSettingsSchema } from '../middleware/validation.js'
 import { rebuildSnapshot } from '../services/resultsSnapshot.js'
 import { clearRoomStreaks } from '../services/penaltyService.js'
 
@@ -139,6 +139,17 @@ router.put('/:id', authenticate, authorize('teacher'), async (req, res) => {
     // Prevent reactivating an ended room
     if (room.endedAt && req.body.isActive === true) {
       return res.status(400).json({ error: 'Cannot reactivate an ended room' })
+    }
+
+    // Validate settings sub-object when present so invalid values are rejected before any DB write.
+    if (req.body.settings !== undefined) {
+      const result = roomSettingsSchema.safeParse(req.body.settings)
+      if (!result.success) {
+        return res.status(400).json({
+          error: 'Validation failed',
+          details: result.error.errors.map(e => ({ field: e.path.join('.'), message: e.message }))
+        })
+      }
     }
 
     const updatedRoom = await updateRoom(req.params.id, req.body)

@@ -44,7 +44,9 @@ const roomSchema = new mongoose.Schema({
       TF: { type: Number, default: 30 },
       MSQ: { type: Number, default: 20 }
     },
-    strictMode: { type: Boolean, default: false }
+    strictMode: { type: Boolean, default: false },
+    mode: { type: String, enum: ['normal', 'video'], default: 'normal' },
+    videoUrl: { type: String, default: null }
   }
 }, {
   timestamps: true

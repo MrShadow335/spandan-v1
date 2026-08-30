@@ -1,3 +1,5 @@
+//frontend/src/components/Leaderboard.jsx
+
 import { useState, useEffect, useRef } from 'react'
 import { API_URL } from '../config.js'
 

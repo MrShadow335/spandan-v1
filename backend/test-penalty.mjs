@@ -1,3 +1,5 @@
+//backend/test-penalty.mjs
+
 /**
  * test-penalty.mjs — Standalone verification for random-guess detection
  *

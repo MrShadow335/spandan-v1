@@ -1,3 +1,5 @@
+// backend/src/__tests__/penaltyIntegration.test.js
+
 /**
  * Penalty Integration Tests
  *

@@ -1,3 +1,5 @@
+//backend/src/services/roomJoinAuthz.js
+
 /**
  * roomJoinAuthz.js
  *

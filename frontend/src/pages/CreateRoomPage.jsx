@@ -1,3 +1,5 @@
+//frontend/src/pages/CreateRoomPage.jsx
+
 import React, { useState, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../stores/authStore'

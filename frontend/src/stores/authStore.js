@@ -1,3 +1,5 @@
+//frontend/src/stores/authStore.js
+
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { API_URL } from '../config.js'

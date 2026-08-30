@@ -1,3 +1,5 @@
+//backend/src/services/penaltyService.js
+
 // penaltyService.js
 // Random-guess PATTERN detection — speed + consecutive-fast-answers + accuracy-vs-speed — plus the
 // (separate, harsher) strict-mode point penalty.

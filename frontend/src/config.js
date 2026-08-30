@@ -1,3 +1,4 @@
+//frontend/src/config.js
 // Central configuration - change VITE_BASE_PATH in .env to update entire app
 // Only ONE value to change when deploying to a different path
 

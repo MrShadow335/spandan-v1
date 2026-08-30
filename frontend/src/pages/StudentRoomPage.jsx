@@ -1,3 +1,5 @@
+//frontend/src/pages/StudentRoomPage.jsx
+
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import useAuthStore from '../stores/authStore'

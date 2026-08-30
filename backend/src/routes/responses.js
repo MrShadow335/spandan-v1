@@ -1,3 +1,5 @@
+//backend/src/routes/responses.js
+
 import express from 'express'
 import { authenticate, authorize } from '../middleware/auth.js'
 import { isBatchEnabled, bufferResponse } from '../services/responseBuffer.js'

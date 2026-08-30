@@ -1,3 +1,5 @@
+//frontend/src/stores/socketStore.js
+
 import { create } from 'zustand'
 import { io } from 'socket.io-client'
 import { SOCKET_URL, SOCKET_PATH } from '../config.js'

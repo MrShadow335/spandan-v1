@@ -1,3 +1,5 @@
+//frontend/src/components/RoomSettingsModal.jsx
+
 import React, { useState, useEffect } from 'react'
 import { getAIProviders } from '../services/questionService'
 
